@@ -1,11 +1,11 @@
+const { watch } = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-// import "./style.css";
-// import * as css from "style.css";
 
 module.exports = {
   entry: {
     index: './src/index.js',
+    codeexample: './src/codex.js',
   },
   mode: 'development',
   devtool: 'inline-source-map',
@@ -27,5 +27,5 @@ module.exports = {
       },
     ],
   },
-  
+  watch: true,
 };
