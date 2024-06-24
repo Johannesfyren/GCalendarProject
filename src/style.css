@@ -32,6 +32,13 @@
 }
 
 
+.login-avatar{
+    width: 10%;
+    height: 24px;
+    background-color: aliceblue;
+}
+
+
 
 
 h1, h2, h3{

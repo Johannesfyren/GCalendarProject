@@ -1,5 +1,8 @@
 import * as css from "./style.css";
 import codeEx from "./codex.js"
+//import { gapiLoaded } from "./gapi.js";
+
+
 const calendarName = document.querySelector("#cal-name");
 const btnReserve = document.querySelector("#btn-reserve");
 const meetingTitle = document.querySelector("#meet-title");
@@ -14,4 +17,7 @@ meetingTitle.textContent = codeEx.codeEx.summary;
 console.log(startTime.getHours());
 console.log(endTime.getHours());
 console.log(codeEx.codeEx.start.dateTime);
+
+
+console.log("henlo");
 
