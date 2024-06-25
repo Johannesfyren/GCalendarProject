@@ -12,12 +12,31 @@ const meetingTime = document.querySelector("#meet-time");
 const startTime = new Date(codeEx.codeEx.start.dateTime);
 const endTime = new Date(codeEx.codeEx.end.dateTime);
 
+const today = new Date();
+
 meetingTitle.textContent = codeEx.codeEx.summary;
 
-console.log(startTime.getHours());
-console.log(endTime.getHours());
-console.log(codeEx.codeEx.start.dateTime);
 
 
-console.log("henlo");
+
+console.log("start testing time diffs");
+
+
+
+checkActiveMeeting(startTime,endTime);
+
+function checkActiveMeeting(startTime, endTime){
+    const today = new Date();
+    
+    if (startTime <= today && endTime >= today){
+        console.log("Time is within!");
+        
+        //check if meeting spans multiple hours
+        
+
+    }
+}
+
+
+
 

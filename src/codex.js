@@ -4,8 +4,8 @@ const codeEx = {
     "id": "abc123",
     "status": "confirmed",
     "htmlLink": "https://www.google.com/calendar/event?eid=abc123",
-    "created": "2024-06-22T10:00:00Z",
-    "updated": "2024-06-22T11:00:00Z",
+    "created": "2024-06-22T22:00:00Z",
+    "updated": "2024-06-22T23:00:00Z",
     "summary": "Team Meeting",
     "description": "Monthly team sync meeting",
     "location": "Conference Room 1",
@@ -23,14 +23,14 @@ const codeEx = {
       "self": false
     },
     "start": {
-      "date": "2024-07-01",
-      "dateTime": "2024-07-01T09:00:00Z",
-      "timeZone": "America/Los_Angeles"
+      "date": "2024-06-25",
+      "dateTime": "2024-06-25T13:00:00Z",
+      "timeZone": "Copenhagen"
     },
     "end": {
-      "date": "2024-07-01",
-      "dateTime": "2024-07-01T10:00:00Z",
-      "timeZone": "America/Los_Angeles"
+      "date": "2024-06-25",
+      "dateTime": "2024-06-25T15:16:00Z",
+      "timeZone": "Copenhagen"
     },
     "endTimeUnspecified": false,
     "recurrence": [
