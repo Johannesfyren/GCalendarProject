@@ -20,7 +20,7 @@
                 <h2 id="meet-title">Meeting Title</h2>
                 <h3 id="meet-time">Monday 14:00-15:00</h3>
                 <button id="connect-GA" onclick="handleAuthClick()">Forbind Google-kalender</button>
-                <span id="content"></span>
+                <span id="no-events"></span>
             </div>
             
         </div>
@@ -28,16 +28,6 @@
             <button id="test-fetch">Test</button>
         </div>
     </div>
-
-
-    <p>Google Calendar API Quickstart</p>
-
-    <!--Add buttons to initiate auth sequence and sign out-->
-    <!-- <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button> -->
-
-    
-
    
     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
     <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>

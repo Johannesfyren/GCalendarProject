@@ -17,9 +17,15 @@ const today = new Date();
 meetingTitle.textContent = codeEx.codeEx.summary;
 
 
+const teststart = new Date("2024-06-26T14:45:00+02:00");
+const testend = new Date("2024-06-26T15:45:00+02:00");
+console.log(` testing dates: ${today>testend}`)
 
 
-console.log("start testing time diffs");
+
+console.log(today);
+console.log(teststart);
+console.log(testend);
 
 
 
