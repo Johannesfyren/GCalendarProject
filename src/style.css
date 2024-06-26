@@ -38,6 +38,21 @@
     background-color: aliceblue;
 }
 
+#no-events{
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
+    text-align: center;
+    color:white;
+}
+
+#connect-GA{
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+
+}
 
 
 
