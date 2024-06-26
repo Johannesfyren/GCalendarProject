@@ -14,11 +14,25 @@
 .main-content{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     flex: 3;
     background-color: #252424;
     padding: 50px;
     gap: 30px;
+
 }
+
+.time-content{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+.countdown-container{
+    width:50%;
+    height: 100%;
+    background-color: blue;
+}
+
 
 .sec-content{
     flex: 1;

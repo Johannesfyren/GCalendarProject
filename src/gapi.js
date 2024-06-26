@@ -55,6 +55,7 @@ let listedEvents;
           callback: '', // defined later
         });
         gisInited = true;
+        console.log(tokenClient);
       }
 
      
@@ -116,7 +117,7 @@ let listedEvents;
           return;
         }
 
-        
+        console.log(`token is expired?${isTokenExpired()}`)
       }
       
       //Request upcoming events every minute to start processing portential changes in the calendar
@@ -126,6 +127,18 @@ let listedEvents;
           console.log(listedEvents);
         }
       }, 5000);
+
+
+
+
+      function isTokenExpired() {
+        const token = gapi.client.getToken();
+        if (!token || !token.expires_at) {
+          return true;
+        }
+        return (Date.now() > token.expires_at);
+      }
+
 
       export {gapiInited, gisInited, listedEvents, authorized}
         
