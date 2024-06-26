@@ -23,19 +23,7 @@ console.log("start testing time diffs");
 
 
 
-checkActiveMeeting(startTime,endTime);
 
-function checkActiveMeeting(startTime, endTime){
-    const today = new Date();
-    
-    if (startTime <= today && endTime >= today){
-        console.log("Time is within!");
-        
-        //check if meeting spans multiple hours
-        
-
-    }
-}
 
 
 
