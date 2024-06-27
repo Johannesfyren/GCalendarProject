@@ -17,6 +17,7 @@ let listedEvents;
       const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
 
       let tokenClient;
+      
       let gapiInited = false;
       let gisInited = false;
       let authorized = false;
@@ -48,14 +49,14 @@ let listedEvents;
        * Callback after Google Identity Services are loaded.
        */
         window.gisLoaded = function() {
-        //console.log("gisLoaded");
         tokenClient = google.accounts.oauth2.initTokenClient({
           client_id: CLIENT_ID,
           scope: SCOPES,
+          access_type: 'offline',
+          prompt: 'consent',
           callback: '', // defined later
         });
         gisInited = true;
-        console.log(tokenClient);
       }
 
      
@@ -68,11 +69,10 @@ let listedEvents;
             throw (resp);
           }
            document.querySelector('#connect-GA').style.visibility = 'hidden';
-         // document.getElementById('signout_button').style.visibility = 'visible';
-          //document.getElementById('authorize_button').innerText = 'Refresh';
           authorized = true;
           await listUpcomingEvents();
         };
+        
 
         if (gapi.client.getToken() === null) {
           // Prompt the user to select a Google Account and ask for consent to share their data
@@ -84,12 +84,28 @@ let listedEvents;
         }
       }
 
+     
 
 
+      window.revokeAccess = function (){
+        const token = gapi.client.getToken();
+        if (token) {
+          const revokeUrl = `https://accounts.google.com/o/oauth2/revoke?token=${token.access_token}`;
+          fetch(revokeUrl)
+            .then(response => {
+              console.log('Access token revoked');
+              gapi.client.setToken(null); // Clear the token
+            })
+            .catch(error => {
+              console.error('Error revoking access token', error);
+            });
+        }
+      }
+     
       /**
        *  Sign out the user upon button click.
        */
-      function handleSignoutClick() {
+      window.handleSignoutClick = function() {
         const token = gapi.client.getToken();
         if (token !== null) {
           google.accounts.oauth2.revoke(token.access_token);
@@ -117,8 +133,10 @@ let listedEvents;
           return;
         }
 
-        console.log(`token is expired?${isTokenExpired()}`)
+        
       }
+      
+
       
       //Request upcoming events every minute to start processing portential changes in the calendar
       setInterval(()=> {
@@ -128,16 +146,16 @@ let listedEvents;
         }
       }, 5000);
 
-
-
-
-      function isTokenExpired() {
-        const token = gapi.client.getToken();
-        if (!token || !token.expires_at) {
-          return true;
+      setInterval(()=> {
+        if (gapiInited && gisInited && authorized){ //Check if we have gotten a token, if yes, we claim a new access_token every hour
+          handleAuthClick();
+          console.log("I handled authorization automatically");
         }
-        return (Date.now() > token.expires_at);
-      }
+      }, 3500000);
+
+
+
+      
 
 
       export {gapiInited, gisInited, listedEvents, authorized}

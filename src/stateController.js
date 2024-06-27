@@ -5,7 +5,6 @@ let state = 0;
 
 //Do we have any meetings in the calendar?
 setInterval(function() {
-    console.log(listedEvents);
     if (gapiInited && gisInited && authorized){
         console.log("Checking if there are any meetings in the calendar");
         if (!listedEvents.length==0){
@@ -22,12 +21,13 @@ setInterval(function() {
                 upcomingMeetingState();
             }
         }
-    } else {
-        //We have no meeetings coming up
-        emptyMeetingState();
-        state=0;
-    }
-  }, 10000);
+        else {
+            //We have no meeetings coming up
+            emptyMeetingState();
+            state=0;
+        }
+    } 
+  }, 5000);
 
 
 
