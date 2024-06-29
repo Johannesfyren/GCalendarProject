@@ -130,6 +130,7 @@ let listedEvents;
           listedEvents = await response.result.items;
         } catch (err) {
           console.log(err.message);
+          
           return;
         }
 

@@ -71,16 +71,18 @@ function activeMeetingState(){
     document.querySelector("#meet-time").textContent = `${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="none";
     document.querySelector("#no-events").textContent ="";
+    document.querySelector("#timer").textContent = `${Math.floor(calculateRemainingTime(endTime.getTime()))} min`;
     
+   
+    
+    
+}
+
+function calculateRemainingTime(endTimeInMillis){
+    const today = new Date().getTime();
+    return (endTimeInMillis-today)/1000/60;
 }
 
 
 
-fetchTest.addEventListener("click", ()=>{
-    if(gapiInited && gisInited){
-        console.log(listedEvents.result.items);
-    }
-    
-    console.log("hello?");
-});
 
