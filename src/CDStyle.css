@@ -1,0 +1,51 @@
+.skill{
+    position: relative;
+    width:160px;
+    height:160px;
+}
+
+.outer{
+    width:160px;
+    height:160px;
+    padding: 20px;
+    border: 1px solid red;
+    border-radius: 50%;
+}
+
+.inner{
+    display: flex;
+    width:120px;
+    height:120px;
+    border: 1px solid red;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+#number{
+    font-weight: 600;
+    color:white;
+    font-size: 2em;
+}
+
+#myCircle{
+    fill:none;
+    stroke: white;
+    stroke-width: 20px;
+    stroke-dasharray: 450;
+    stroke-dashoffset: 300;
+    /* animation: anim 1s linear forwards; */
+}
+
+/* @keyframes anim {
+    100%{
+        stroke-dashoffset: 200;
+    }
+} */
+
+svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+}

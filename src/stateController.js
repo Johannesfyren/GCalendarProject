@@ -71,16 +71,34 @@ function activeMeetingState(){
     document.querySelector("#meet-time").textContent = `${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="none";
     document.querySelector("#no-events").textContent ="";
-    document.querySelector("#timer").textContent = `${Math.floor(calculateRemainingTime(endTime.getTime()))} min`;
+    document.querySelector("#number").textContent = `${Math.floor(calculateRemainingTime(endTime))} min`;
+    document.querySelector('circle#myCircle').style.strokeDashoffset = calculateCircleCircumference(startTime,endTime);
+    
     
    
     
-    
 }
 
-function calculateRemainingTime(endTimeInMillis){
+function calculateRemainingTime(endTime){
     const today = new Date().getTime();
+    const endTimeInMillis = endTime.getTime();
     return (endTimeInMillis-today)/1000/60;
+}
+
+function calculateCircleCircumference(startTime,endTime){
+    const today = new Date().getTime();
+    
+    const startTimeInMillis = startTime.getTime();
+    const endTimeInMillis = endTime.getTime();
+
+    const totalMeetingTime = endTimeInMillis - startTimeInMillis;
+    const elabsedMeetingTime = today - startTimeInMillis;
+    const percentMeetingElabsed = elabsedMeetingTime/totalMeetingTime*100;
+    console.log(`totalMeetingTime${totalMeetingTime}`);
+    console.log(`elabsedtime${elabsedMeetingTime}`);
+    console.log(`percentmeetingelablsed ${percentMeetingElabsed}`);
+    return (percentMeetingElabsed * 4.5); //4.5 is 1% of the circumfrence value used to draw the circle
+    
 }
 
 
