@@ -28,8 +28,11 @@
     grid-template-columns: 1fr 1fr;
     flex-direction: row;
     flex: 1;
+    min-width: 500px;
 }
-
+.title-time-container{
+    flex-shrink: 0;
+}
 .countdown-container{
     display: flex;
     width:100%;
