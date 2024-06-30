@@ -1,8 +1,7 @@
-.skill{
+.countdown-container{
     display: flex;
     position: relative;
-   
-    
+    /* visibility: hidden; */
     max-height:800px;
     aspect-ratio: 1 / 1;
     justify-content: center;

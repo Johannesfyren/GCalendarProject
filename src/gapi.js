@@ -68,7 +68,7 @@ let listedEvents;
           if (resp.error !== undefined) {
             throw (resp);
           }
-           document.querySelector('#connect-GA').style.visibility = 'hidden';
+           document.querySelector('#connect-GA').style.display = 'none';
           authorized = true;
           await listUpcomingEvents();
         };

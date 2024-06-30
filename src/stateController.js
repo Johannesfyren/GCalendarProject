@@ -52,6 +52,8 @@ function upcomingMeetingState(){
     document.querySelector("#meet-time").textContent = `${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="block";
     document.querySelector("#no-events").textContent ="";
+    document.querySelector(".countdown-container").style.visibility ="hidden";
+    
 }
 
 function emptyMeetingState(){
@@ -59,6 +61,7 @@ function emptyMeetingState(){
     document.querySelector("#meet-title").textContent ="";
     document.querySelector("#meet-time").textContent ="";
     document.querySelector("#btn-reserve").style.display ="block";
+    document.querySelector(".countdown-container").style.visibility ="hidden";
 }
 
 function activeMeetingState(){
@@ -66,13 +69,17 @@ function activeMeetingState(){
     const startTimeMinsConv = (startTime.getMinutes() < 10 ? '0' : '') + startTime.getMinutes();
     const endTime = new Date(listedEvents[0].end.dateTime);
     const endTimeMinsConv = (endTime.getMinutes() < 10 ? '0' : '') + endTime.getMinutes();
-    
+
+    document.querySelector(".time-content").style.display ="grid";
     document.querySelector("#meet-title").textContent = listedEvents[0].summary; //Meet title
     document.querySelector("#meet-time").textContent = `${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="none";
     document.querySelector("#no-events").textContent ="";
     document.querySelector("#number").textContent = `${Math.floor(calculateRemainingTime(endTime))} min`;
+    document.querySelector(".countdown-container").style.visibility ="visible";
     document.querySelector('circle#myCircle').style.strokeDashoffset = calculateCircleCircumference(startTime,endTime);
+    
+    
     
     
    
@@ -97,7 +104,7 @@ function calculateCircleCircumference(startTime,endTime){
     console.log(`totalMeetingTime${totalMeetingTime}`);
     console.log(`elabsedtime${elabsedMeetingTime}`);
     console.log(`percentmeetingelablsed ${percentMeetingElabsed}`);
-    return (percentMeetingElabsed * 135); //135 is 1% of the circumference value used to draw the circle
+    return (percentMeetingElabsed * 13.5); //135 is 1% of the circumference value used to draw the circle
     
 }
 

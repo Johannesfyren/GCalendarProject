@@ -7,7 +7,7 @@
     <!-- <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp"> -->
     <title>Document</title>
 </head>
-    
+ 
 <body>
     <div class="container">
         <div class="main-content">
@@ -21,42 +21,27 @@
                     <h3 id="meet-time"></h3>
                 </div>
 
-
-                <div class="skill">
+                <div class="countdown-container">
                     <div id="number">122 min</div> 
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                       
                         <circle id="myCircle2" stroke-linecap="round" />
                     </svg>
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                        
                         <circle id="myCircle" stroke-linecap="round" />
                     </svg>
                 </div>
                 
-
-  
-                <!-- <div class="countdown-container">-->
-                    
-                    
-
-
-
-
-
-
-
-                </div>
             </div>
             <button id="connect-GA" onclick="handleAuthClick()">Forbind Google-kalender</button>
             <span id="no-events"></span>
             
         </div>
-        <div class="sec-content">
-            <!-- <button id="test-fetch">Test</button>
-            <button id="revoke" onclick="revokeAccess()">log out</button> -->
-        </div>
     </div>
+    <div class="sec-content">
+        <button id="test-fetch">Test</button>
+        <button id="revoke" onclick="revokeAccess()">log out</button>
+    </div>
+    
    
     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
     <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
