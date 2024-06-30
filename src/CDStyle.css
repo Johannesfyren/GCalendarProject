@@ -27,7 +27,7 @@ svg{
 
 #myCircle2{ /* background to timer*/
     fill:none;
-    stroke: lightgray;
+    stroke: rgb(65, 64, 64);
     stroke-width: 40px;
     stroke-dasharray: 1350;
     stroke-dashoffset: 0;
@@ -39,7 +39,7 @@ svg{
 
 #myCircle{ /* background to timer*/
     fill:none;
-    stroke: url(#GradientColor);
+    stroke: blue;
     stroke-width: 40px;
     stroke-dasharray: 1350;
     stroke-dashoffset: 675;
