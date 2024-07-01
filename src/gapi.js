@@ -70,6 +70,7 @@ let listedEvents;
           }
            document.querySelector('#connect-GA').style.display = 'none';
           authorized = true;
+          
           await listUpcomingEvents();
         };
         
@@ -128,6 +129,7 @@ let listedEvents;
           };
           response = await gapi.client.calendar.events.list(request);
           listedEvents = await response.result.items;
+          console.log(response);
         } catch (err) {
           console.log(err.message);
           

@@ -1,6 +1,5 @@
 import { listUpcomingEvents, gapiInited, gisInited, listedEvents, authorized} from "./gapi";
-const fetchTest = document.querySelector("#test-fetch");
-let state = 0;
+
 
 
 //Do we have any meetings in the calendar?
@@ -13,18 +12,15 @@ setInterval(function() {
             
             if (checkActiveMeeting(listedEvents[0].start.dateTime,listedEvents[0].end.dateTime)){
                 console.log("We have an active meeting!");
-                state=2; //active meeting
                 activeMeetingState();
             }else { 
                 console.log("We have meetings in the calendar, but none is active!");
-                state=1; //there are meetings, but none is active
                 upcomingMeetingState();
             }
         }
         else {
             //We have no meeetings coming up
             emptyMeetingState();
-            state=0;
         }
     } 
   }, 5000);
@@ -49,6 +45,7 @@ function upcomingMeetingState(){
     const endTimeMinsConv = (endTime.getMinutes() < 10 ? '0' : '') + endTime.getMinutes();
 
     document.querySelector("#meet-title").textContent = listedEvents[0].summary; //Meet title
+    document.querySelector("#meet-org").textContent = listedEvents[0].creator.email;
     document.querySelector("#meet-time").textContent = `${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="block";
     document.querySelector("#no-events").textContent ="";
@@ -60,6 +57,7 @@ function emptyMeetingState(){
     document.querySelector("#no-events").textContent ="Ingen Begivenheder";
     document.querySelector("#meet-title").textContent ="";
     document.querySelector("#meet-time").textContent ="";
+    document.querySelector("#meet-org").textContent ="";
     document.querySelector("#btn-reserve").style.display ="block";
     document.querySelector(".countdown-container").style.visibility ="hidden";
 }
@@ -72,6 +70,7 @@ function activeMeetingState(){
 
     document.querySelector(".time-content").style.display ="grid";
     document.querySelector("#meet-title").textContent = listedEvents[0].summary; //Meet title
+    document.querySelector("#meet-org").textContent =listedEvents[0].creator.email;
     document.querySelector("#meet-time").textContent = `${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="none";
     document.querySelector("#no-events").textContent ="";
