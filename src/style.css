@@ -58,14 +58,15 @@ body{
 }
 
 #no-events{
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 30%;
     font-size: 4em;
     text-align: center;
     color:white;
 }
 
-#connect-GA{
+#connect-GA{/*tjek*/
     position: absolute;
     top: 50%;
     left: 40%;

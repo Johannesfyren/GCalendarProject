@@ -1,7 +1,7 @@
 .countdown-container{
     display: flex;
     position: relative;
-    /* visibility: hidden; */
+    visibility: hidden; 
     height:500px;
     aspect-ratio: 1 / 1;
     justify-content: center;
@@ -30,9 +30,9 @@ svg{
     fill:none;
     stroke: rgb(65, 64, 64);
     stroke-width: 40px;
-    stroke-dasharray: 1350;
+    stroke-dasharray: 1130;
     stroke-dashoffset: 0;
-    r:216; 
+    r:180; 
     cx:50%;
     cy:50%;
     /* animation: anim 1s linear forwards; */
@@ -42,13 +42,14 @@ svg{
     fill:none;
     stroke: blue;
     stroke-width: 40px;
-    stroke-dasharray: 1350;
+    stroke-dasharray: 1130;
     stroke-dashoffset: 675;
-    r:216; 
+    r:180; 
     cx:50%;
     cy:50%;
     /* animation: anim 1s linear forwards; */
 }
+
 
 /* @keyframes anim {
     100%{
