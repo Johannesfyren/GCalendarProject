@@ -84,17 +84,34 @@ function activeMeetingState(){
 function displayAdditionalMeetings(){
     const upcContainer  = document.querySelector('.sec-content');
     upcContainer.replaceChildren();
-    console.log('we here');
     for (let i = 1; i < listedEvents.length; i++){
-        console.log('we loopin')
+        //Set time correctly
+        const startTime = new Date(listedEvents[i].start.dateTime);
+        const startTimeMinsConv = (startTime.getMinutes() < 10 ? '0' : '') + startTime.getMinutes();
+        const endTime = new Date(listedEvents[i].end.dateTime);
+        const endTimeMinsConv = (endTime.getMinutes() < 10 ? '0' : '') + endTime.getMinutes();
+
+        //Define elements
         const card = document.createElement("div");
         card.classList.add("upcoming-card");
+
         const title = document.createElement("h1");
         title.classList.add("upcoming-title");
         title.textContent = listedEvents[i].summary;
-        // title.textContent="hello";
+
+        const organizer = document.createElement("h2");
+        organizer.classList.add("upcoming-org");
+        organizer.textContent = listedEvents[i].creator.email;
+
+        const time = document.createElement("h2");
+        time.classList.add("upcoming-time");
+        time.textContent = `${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; 
+        
+        //Appemnd elements
         upcContainer.append(card);
         card.append(title);
+        card.append(organizer);
+        card.append(time);
     }
 }
 

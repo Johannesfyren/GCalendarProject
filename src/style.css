@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    --pri-col: #252424;
+    --sec-col: rgb(19, 35, 49);
 }
 body{
     display: flex;
@@ -14,7 +16,7 @@ body{
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #252424;
+    background-color: var(--pri-col);
     flex:1;
 }
 .main-content{
@@ -47,11 +49,7 @@ body{
 }
 
 
-.login-avatar{
-    width: 10%;
-    height: 24px;
-    background-color: aliceblue;
-}
+
 
 #no-events{
     position: absolute;
@@ -62,7 +60,7 @@ body{
     color:white;
 }
 
-#connect-GA{/*tjek*/
+#connect-GA{
     position: absolute;
     top: 50%;
     left: 40%;
@@ -74,18 +72,28 @@ body{
 .sec-content{
     display: flex;
     flex: 1;
-    background-color: bisque;
+    background-color: var(--sec-col);
     max-height: 200px;
     width: 100vw;
-    overflow-y: scroll;
+    overflow-x: scroll;
 }
+
 
 .sec-content div{
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    width: 400px;
+    gap: 2px;
+    min-width: 400px;
+    background-color: rgb(19, 35, 49);
+    padding-left: 50px; /*tjek værdi*/
+    padding-top: 10px; /*tjek værdi*/
 }
+
+/* .sec-content:first-child{
+    padding-left: 50px;
+    background-color: #fff;
+} */
+
 .sec-content h1{
     padding-bottom: 5px;
     font-size: 2em;
