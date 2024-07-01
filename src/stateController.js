@@ -1,25 +1,26 @@
-import { listUpcomingEvents, gapiInited, gisInited, listedEvents, authorized} from "./gapi";
+import { gapiInited, gisInited, listedEvents, authorized} from "./gapi";
 
 
 
 //Do we have any meetings in the calendar?
 setInterval(function() {
     if (gapiInited && gisInited && authorized){
-        console.log("Checking if there are any meetings in the calendar");
-        if (!listedEvents.length==0){
-            console.log("there are meetings in the calendar!");
-            console.log("checking if it any of the meetings is active!");
-            
-            if (checkActiveMeeting(listedEvents[0].start.dateTime,listedEvents[0].end.dateTime)){
-                console.log("We have an active meeting!");
+
+        if (!listedEvents.length==0){ //Checking if there are any meetings in the calendar
+
+            if (checkActiveMeeting(listedEvents[0].start.dateTime,listedEvents[0].end.dateTime)){ //"checking if it any of the meetings is active!"
                 activeMeetingState();
-            }else { 
-                console.log("We have meetings in the calendar, but none is active!");
+                displayAdditionalMeetings();
+                
+
+            }else { //("We have meetings in the calendar, but none is active!");
                 upcomingMeetingState();
+                displayAdditionalMeetings();
+                
             }
         }
-        else {
-            //We have no meeetings coming up
+        else {//We have no meeetings coming up
+            
             emptyMeetingState();
         }
     } 
@@ -78,12 +79,26 @@ function activeMeetingState(){
     document.querySelector(".countdown-container").style.visibility ="visible";
     document.querySelector('circle#myCircle').style.strokeDashoffset = calculateCircleCircumference(startTime,endTime);
     
-    
-    
-    
-   
-    
 }
+
+function displayAdditionalMeetings(){
+    const upcContainer  = document.querySelector('.sec-content');
+    upcContainer.replaceChildren();
+    console.log('we here');
+    for (let i = 1; i < listedEvents.length; i++){
+        console.log('we loopin')
+        const card = document.createElement("div");
+        card.classList.add("upcoming-card");
+        const title = document.createElement("h1");
+        title.classList.add("upcoming-title");
+        title.textContent = listedEvents[i].summary;
+        // title.textContent="hello";
+        upcContainer.append(card);
+        card.append(title);
+    }
+}
+
+
 
 function calculateRemainingTime(endTime){
     const today = new Date().getTime();

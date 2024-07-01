@@ -129,7 +129,7 @@ let listedEvents;
           };
           response = await gapi.client.calendar.events.list(request);
           listedEvents = await response.result.items;
-          console.log(response);
+          console.log(listedEvents.length);
         } catch (err) {
           console.log(err.message);
           

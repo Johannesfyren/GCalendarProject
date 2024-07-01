@@ -38,11 +38,7 @@ body{
 
 
 
-.sec-content{
-    flex: 1;
-    background-color: bisque;
-    max-height: 200px;
-}
+
 
 .header-content{
     display: flex;
@@ -74,10 +70,35 @@ body{
     height: 100px;
 }
 
-#timer{
-    justify-content: center;
-    align-items: center;
+/* Secondary content / upcomming meeitngs css*/
+.sec-content{
+    display: flex;
+    flex: 1;
+    background-color: bisque;
+    max-height: 200px;
+    width: 100vw;
+    overflow-y: scroll;
 }
+
+.sec-content div{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 400px;
+}
+.sec-content h1{
+    padding-bottom: 5px;
+    font-size: 2em;
+}
+.sec-content h2{
+    font-size: 1em;
+}
+
+
+
+
+
+/*GENERAL utilitites*/
 
 h1, h2, h3{
     color: white;

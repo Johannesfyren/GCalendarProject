@@ -49,7 +49,10 @@ svg{
     cy:50%;
     /* animation: anim 1s linear forwards; */
 }
-
+#timer{
+    justify-content: center;
+    align-items: center;
+}
 
 /* @keyframes anim {
     100%{
