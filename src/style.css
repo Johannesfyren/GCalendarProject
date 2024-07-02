@@ -5,6 +5,8 @@
     --pri-col: #252424;
     --sec-col: rgb(19, 35, 49);
     --card-col: rgb(24, 43, 60);
+
+    --btn-prim: rgb(55, 55, 151);
 }
 body{
     display: flex;
@@ -121,6 +123,16 @@ h2{
 button{
     padding: 5px 10px;
     font-size: 2em;
+}
+
+.primary-btn{
+    padding: 15px 25px;
+    font-size: 2em;
+    border-radius: 10px;
+    border-style: none;
+    background-color: var(--btn-prim);
+    color: white;
+    font-weight: 600;
 }
 
 
