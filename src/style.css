@@ -4,6 +4,7 @@
     box-sizing: border-box;
     --pri-col: #252424;
     --sec-col: rgb(19, 35, 49);
+    --card-col: rgb(24, 43, 60);
 }
 body{
     display: flex;
@@ -76,6 +77,7 @@ body{
     max-height: 200px;
     width: 100vw;
     overflow-x: scroll;
+    padding-left: 10px;
 }
 
 
@@ -84,22 +86,21 @@ body{
     flex-direction: column;
     gap: 2px;
     min-width: 400px;
-    background-color: rgb(19, 35, 49);
-    padding-left: 50px; /*tjek værdi*/
+    background-color: var(--card-col);
     padding-top: 10px; /*tjek værdi*/
+    padding-left: 10px;
+    margin: 10px;
+    border-radius: 10px;
 }
 
-/* .sec-content:first-child{
-    padding-left: 50px;
-    background-color: #fff;
-} */
+
 
 .sec-content h1{
     padding-bottom: 5px;
-    font-size: 2em;
+    font-size: 2.2em;
 }
 .sec-content h2{
-    font-size: 1em;
+    font-size: 1.2em;
 }
 
 

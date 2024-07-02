@@ -107,7 +107,7 @@ function displayAdditionalMeetings(){
         time.classList.add("upcoming-time");
         time.textContent = `${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; 
         
-        //Appemnd elements
+        //Append elements
         upcContainer.append(card);
         card.append(title);
         card.append(organizer);
