@@ -133,9 +133,6 @@ function calculateCircleCircumference(startTime,endTime){
     const totalMeetingTime = endTimeInMillis - startTimeInMillis;
     const elabsedMeetingTime = today - startTimeInMillis;
     const percentMeetingElabsed = elabsedMeetingTime/totalMeetingTime*100;
-    console.log(`totalMeetingTime${totalMeetingTime}`);
-    console.log(`elabsedtime${elabsedMeetingTime}`);
-    console.log(`percentmeetingelablsed ${percentMeetingElabsed}`);
     return (percentMeetingElabsed * 11.3); //11.3 is 1% of the circumference value used to draw the circle
     
 }

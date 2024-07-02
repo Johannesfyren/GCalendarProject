@@ -14,7 +14,7 @@ let listedEvents;
 
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
-      const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
+      const SCOPES = 'https://www.googleapis.com/auth/calendar';
 
       let tokenClient;
       
@@ -145,6 +145,7 @@ let listedEvents;
       setInterval(()=> {
         if (gapiInited && gisInited && authorized){ //Check if we have gotten a token, loaded the library and also authorized a user
           listUpcomingEvents();
+          
           console.log(listedEvents);
         }
       }, 5000);
@@ -158,8 +159,46 @@ let listedEvents;
 
 
 
+
+      // const today = new Date();
+      // const todayPlus = new Date();
+      // todayPlus.setMinutes(today.getMinutes()+15)
+      // console.log(`my date: ${today.toISOString()} ------ todayPlus = ${todayPlus}`);
+
       
+      // ____________TESTING FUNCTIONLITY_________________
 
+      async function createEvent(extendedTime){
+        const today = new Date();
+        const todayPlus = new Date();
+        todayPlus.setMinutes(today.getMinutes()+extendedTime); //Sæt sluttidspunkt til angivet forlængelse
+       
 
-      export {gapiInited, gisInited, listedEvents, authorized}
+        const event = {
+          'summary': 'Google I/O 2015',
+          'location': '800 Howard St., San Francisco, CA 94103',
+          'description': 'A chance to hear more about Google\'s developer products.',
+          'start': {
+            'dateTime': today.toISOString(),
+            'timeZone': 'Europe/Copenhagen'
+          },
+          'end': {
+            'dateTime': todayPlus.toISOString(),
+            'timeZone': 'Europe/Copenhagen'
+          },
+          
+        };
+        
+        const request = await gapi.client.calendar.events.insert({
+          'calendarId': 'primary',
+          'resource': event
+        });
+        
+        // request.execute(function(event) {
+        //   append('Event created: ' + event.htmlLink);
+        // });
+        
+      }
+      
+      export {gapiInited, gisInited, listedEvents, authorized, createEvent}
         
