@@ -115,10 +115,14 @@ h1, h2, h3{
     color: white;
 }
 h1{
-    font-size: 4em;
+    font-size: 3em;
+    color: rgb(212, 209, 209);
 }
 h2{
-    font-size: 3em;
+    font-size: 4em;
+}
+h3{
+    font-size: 2em;
 }
 button{
     padding: 5px 10px;

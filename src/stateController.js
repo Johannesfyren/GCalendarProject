@@ -1,6 +1,5 @@
 import { gapiInited, gisInited, listedEvents, authorized} from "./gapi";
-
-
+const ugedage = ["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"];
 
 //Do we have any meetings in the calendar?
 setInterval(function() {
@@ -8,7 +7,7 @@ setInterval(function() {
 
         if (!listedEvents.length==0){ //Checking if there are any meetings in the calendar
 
-            if (checkActiveMeeting(listedEvents[0].start.dateTime,listedEvents[0].end.dateTime)){ //"checking if it any of the meetings is active!"
+            if (checkIfActiveMeeting(listedEvents[0].start.dateTime,listedEvents[0].end.dateTime)){ //"checking if it any of the meetings is active!"
                 activeMeetingState();
                 displayAdditionalMeetings();
                 
@@ -28,11 +27,13 @@ setInterval(function() {
 
 
 
-function checkActiveMeeting(startTime, endTime){
+function checkIfActiveMeeting(startTime, endTime){
     const today = new Date();
     const start = new Date(startTime);
     const end = new Date(endTime);
     
+
+
     if (start <= today && end >= today){
         return true;
     }
@@ -47,7 +48,7 @@ function upcomingMeetingState(){
 
     document.querySelector("#meet-title").textContent = listedEvents[0].summary; //Meet title
     document.querySelector("#meet-org").textContent = listedEvents[0].creator.email;
-    document.querySelector("#meet-time").textContent = `${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
+    document.querySelector("#meet-time").textContent = `${getWeekDayName(startTime)}, ${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="block";
     document.querySelector("#no-events").textContent ="";
     document.querySelector(".countdown-container").style.visibility ="hidden";
@@ -72,7 +73,7 @@ function activeMeetingState(){
     document.querySelector(".time-content").style.display ="grid";
     document.querySelector("#meet-title").textContent = listedEvents[0].summary; //Meet title
     document.querySelector("#meet-org").textContent =listedEvents[0].creator.email;
-    document.querySelector("#meet-time").textContent = `${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
+    document.querySelector("#meet-time").textContent = `${getWeekDayName(startTime)}, ${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="none";
     document.querySelector("#no-events").textContent ="";
     document.querySelector("#number").textContent = `${Math.floor(calculateRemainingTime(endTime))} min`;
@@ -105,7 +106,7 @@ function displayAdditionalMeetings(){
 
         const time = document.createElement("h2");
         time.classList.add("upcoming-time");
-        time.textContent = `${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; 
+        time.textContent = `${getWeekDayName(startTime)}, ${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; 
         
         //Append elements
         upcContainer.append(card);
@@ -137,6 +138,26 @@ function calculateCircleCircumference(startTime,endTime){
     console.log(`percentmeetingelablsed ${percentMeetingElabsed}`);
     return (percentMeetingElabsed * 11.3); //11.3 is 1% of the circumference value used to draw the circle
     
+}
+
+function getWeekDayName(meetingDate){
+    const today = new Date();
+
+    if (today.getUTCDay() == meetingDate.getUTCDay()){ //Samme ugedag
+        return "I dag";
+    }
+    
+    if (today.getUTCDay() !== meetingDate.getUTCDay()){//Forskellige ugedage
+        
+        if(today.getUTCDay() == 6){//Hvis det er lørdag, tjekker vi lige manuelt om næste dag er søndag (0), og angiver derved "I morgen"
+            if (meetingDate == 0){
+                return "I morgen";
+            } else { return ugedage[meetingDate.getUTCDay()]}; //Retuner dato, hvis det er længere tid til mødet end dagen efter
+
+        } else if (meetingDate.getUTCDay()-today.getUTCDay() == 1){ //Hvis mødet er i morgen
+            return "I morgen";
+        } else { return ugedage[meetingDate.getUTCDay()]}; //Retuner dato, hvis det er længere tid til mødet end dagen efter
+    }
 }
 
 
