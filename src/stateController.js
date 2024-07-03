@@ -7,6 +7,8 @@ setInterval(function() {
     if (gapiInited && gisInited && authorized){
 
         if (!listedEvents.length==0){ //Checking if there are any meetings in the calendar
+            const nextMeeting = new Date(listedEvents[0].start.dateTime);
+            console.log(`my time ${nextMeeting.getTime()}`);
 
             if (checkIfActiveMeeting(listedEvents[0].start.dateTime,listedEvents[0].end.dateTime)){ //"checking if it any of the meetings is active!"
                 activeMeetingState();
