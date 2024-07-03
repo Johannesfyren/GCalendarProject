@@ -13,12 +13,12 @@ const meetingTitle = document.querySelector("#meet-title");
 const meetingTime = document.querySelector("#meet-time");
 
 
-const startTime = new Date(codeEx.codeEx.start.dateTime);
-const endTime = new Date(codeEx.codeEx.end.dateTime);
+// const startTime = new Date(codeEx.codeEx.start.dateTime);
+// const endTime = new Date(codeEx.codeEx.end.dateTime);
 
 const today = new Date();
 
-meetingTitle.textContent = codeEx.codeEx.summary;
+// meetingTitle.textContent = codeEx.codeEx.summary;
 
 
 const teststart = new Date("2024-06-26T14:45:00+02:00");
