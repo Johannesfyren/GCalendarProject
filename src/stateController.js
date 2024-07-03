@@ -1,4 +1,5 @@
 import { gapiInited, gisInited, listedEvents, authorized} from "./gapi";
+import { calculateCircleCircumference, calculateRemainingTime} from "./countDown";
 const ugedage = ["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"];
 
 //Do we have any meetings in the calendar?
@@ -55,6 +56,7 @@ function upcomingMeetingState(){
     
 }
 
+//If there are no meetings fetched though the API, due to no upcoming meetings
 function emptyMeetingState(){
     document.querySelector("#no-events").textContent ="Ingen Begivenheder";
     document.querySelector("#meet-title").textContent ="";
@@ -116,26 +118,7 @@ function displayAdditionalMeetings(){
 }
 
 
-
-function calculateRemainingTime(endTime){
-    const today = new Date().getTime();
-    const endTimeInMillis = endTime.getTime();
-    return (endTimeInMillis-today)/1000/60;
-}
-
-function calculateCircleCircumference(startTime,endTime){
-    const today = new Date().getTime();
-    
-    const startTimeInMillis = startTime.getTime();
-    const endTimeInMillis = endTime.getTime();
-
-    const totalMeetingTime = endTimeInMillis - startTimeInMillis;
-    const elabsedMeetingTime = today - startTimeInMillis;
-    const percentMeetingElabsed = elabsedMeetingTime/totalMeetingTime*100;
-    return (percentMeetingElabsed * 11.3); //11.3 is 1% of the circumference value used to draw the circle
-    
-}
-
+//Calculates which day of the week it is. Wiil display "I dag / I morgen", if the meeting is within that timeframe
 function getWeekDayName(meetingDate){
     const today = new Date();
 
