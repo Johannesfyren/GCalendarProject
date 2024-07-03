@@ -141,4 +141,26 @@ button{
     font-weight: 600;
 }
 
+.primary-btn:active{
+    transform: scale(95%);
+    color: rgb(187, 185, 185);
+    
+}
+
+.secondary-btn{
+    padding: 15px 25px;
+    font-size: 2em;
+    border-radius: 10px;
+    border: 2px solid white;
+    background-color: transparent;
+    font-weight: 600;
+    color: white;
+}
+.secondary-btn:active{
+    transform: scale(95%);
+    color: rgb(187, 185, 185);
+    border: 1px solid rgb(187, 185, 185);
+    margin: 1px;
+}
+
 

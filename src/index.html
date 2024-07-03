@@ -42,21 +42,25 @@
     </div>
     <div class="sec-content"></div>
 
-    <dialog id="reserve-dialog" open>
-        <div>
+    <dialog id="reserve-dialog">
+        <div id="reserve-header">
             <h1>Reservér lokale nu</h1>
+            <ion-icon name="close-circle-outline" id="reserve-close"></ion-icon>
+            
         </div>
-        <div>
-            <button>10 min</button>
-            <button>15 min</button>
-            <button>30 min</button>
-            <button>60 min</button>
+        <div id="reserve-btngroup">
+            <button class="secondary-btn">10 min</button>
+            <button class="secondary-btn">15 min</button>
+            <button class="secondary-btn">30 min</button>
+            <button class="secondary-btn">60 min</button>
         </div>
     </dialog>
     
    
     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
     <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
    
 </body>
 </html>
