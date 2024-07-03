@@ -12,7 +12,7 @@ const reserve_60 = document.querySelector('#reserve-60');
 
 
 reserve.addEventListener('click', ()=>{
-    checkDisabledReserveTimes();
+    //checkDisabledReserveTimes();
     reserveDialog.showModal();
 })
 
@@ -22,7 +22,6 @@ closeReserveDialog.addEventListener('click', ()=>{
 })
 
 reserve_10.addEventListener('click', ()=>{
-    listedEvents[0].creator.email = '';
     createEvent(10);
     reserveDialog.close();
 })

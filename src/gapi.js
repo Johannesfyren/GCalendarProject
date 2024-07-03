@@ -27,7 +27,6 @@ let listedEvents;
       /**
        * Callback after api.js is loaded.
        */
-      //console.log("GAPI.js loaded");
       window.gapiLoaded = function () {
         gapi.load('client', initializeGapiClient);
        
@@ -71,7 +70,7 @@ let listedEvents;
            document.querySelector('#connect-GA').style.display = 'none';
           authorized = true;
           
-          await listUpcomingEvents();
+          await listUpcomingEvents(); 
         };
         
 
@@ -87,7 +86,7 @@ let listedEvents;
 
      
 
-
+      //Revoke access to Google Account - completely removes prior access
       window.revokeAccess = function (){
         const token = gapi.client.getToken();
         if (token) {
@@ -141,7 +140,7 @@ let listedEvents;
       
 
       
-      //Request upcoming events every minute to start processing portential changes in the calendar
+      //Request upcoming events every x minute to start processing portential changes in the calendar
       setInterval(()=> {
         if (gapiInited && gisInited && authorized){ //Check if we have gotten a token, loaded the library and also authorized a user
           listUpcomingEvents();
@@ -159,24 +158,13 @@ let listedEvents;
 
 
 
-
-      // const today = new Date();
-      // const todayPlus = new Date();
-      // todayPlus.setMinutes(today.getMinutes()+15)
-      // console.log(`my date: ${today.toISOString()} ------ todayPlus = ${todayPlus}`);
-
       
-      // ____________TESTING FUNCTIONLITY_________________
-
+      //create new events in the Google calendar coonected
       async function createEvent(extendedTime){
         const today = new Date();
         const todayPlus = new Date();
         todayPlus.setMinutes(today.getMinutes()+extendedTime); //Sæt sluttidspunkt til angivet forlængelse
-        console.log(today);
-        console.log(todayPlus);
-        
-       
-
+  
         const event = {
           'summary': 'Ad-hoc møde',
           'start': {
@@ -194,7 +182,7 @@ let listedEvents;
           'calendarId': 'primary',
           'resource': event
         });
-        
+        //commented this out, as it did nothing good 
         // request.execute(function(event) {
         //   append('Event created: ' + event.htmlLink);
         // });
