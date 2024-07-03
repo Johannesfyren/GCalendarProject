@@ -30,20 +30,29 @@
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <circle id="myCircle" stroke-linecap="round" />
                     </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <circle id="indicator-anim" stroke-linecap="round" />
+                    </svg>
                 </div>
-                
             </div>
 
             <button id="connect-GA" class="primary-btn" onclick="handleAuthClick()">Forbind Google-kalender</button>
             <span id="no-events"></span>
-            
         </div>
     </div>
-    <div class="sec-content">
-        
-        
-        
-    </div>
+    <div class="sec-content"></div>
+
+    <dialog id="reserve-dialog" open>
+        <div>
+            <h1>Reservér lokale nu</h1>
+        </div>
+        <div>
+            <button>10 min</button>
+            <button>15 min</button>
+            <button>30 min</button>
+            <button>60 min</button>
+        </div>
+    </dialog>
     
    
     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>

@@ -172,6 +172,9 @@ let listedEvents;
         const today = new Date();
         const todayPlus = new Date();
         todayPlus.setMinutes(today.getMinutes()+extendedTime); //Sæt sluttidspunkt til angivet forlængelse
+        console.log(today);
+        console.log(todayPlus);
+        
        
 
         const event = {

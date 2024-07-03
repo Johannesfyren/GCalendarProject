@@ -79,7 +79,6 @@ function activeMeetingState(){
     document.querySelector("#number").textContent = `${Math.floor(calculateRemainingTime(endTime))} min`;
     document.querySelector(".countdown-container").style.visibility ="visible";
     document.querySelector('circle#myCircle').style.strokeDashoffset = calculateCircleCircumference(startTime,endTime);
-    
 }
 
 function displayAdditionalMeetings(){
