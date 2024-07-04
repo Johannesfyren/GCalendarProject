@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
+    <!-- <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp"> -->
+    <title>Document</title>
+<script defer src="index.js"></script></head>
+ 
+<body>
+    <div class="container">
+        <div class="main-content">
+            <div class="header-content">
+                <h1 id="cal-name">SSD Møderum</h1>
+                <button id="btn-reserve" class="primary-btn"><span class="button__text">Reservér</span></button>
+                <button id="btn-end" class="secondary-btn"><span class="button__text">Afslut møde</span></button>
+            </div>
+            <div class="time-content">
+                <div class="title-time-container">
+                    <h2 id="meet-title"></h2>
+                    <h3 id="meet-org"></h3>
+                    <h3 id="meet-time"></h3>
+                </div>
+
+                <div class="countdown-container">
+                    <div id="number">122 min</div> 
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <circle id="myCircle2" stroke-linecap="round" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <circle id="myCircle" stroke-linecap="round" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <circle id="indicator-anim" stroke-linecap="round" />
+                    </svg>
+                </div>
+            </div>
+
+            <button id="connect-GA" class="primary-btn" onclick="handleAuthClick()">Forbind Google-kalender</button>
+            <span id="no-events"></span>
+        </div>
+    </div>
+    <div class="sec-content"></div>
+
+    <dialog id="reserve-dialog">
+        <div id="reserve-header">
+            <h1>Reservér lokale nu</h1>
+            <ion-icon name="close-circle-outline" id="reserve-close"></ion-icon>
+            
+        </div>
+        <div id="reserve-btngroup">
+            <button class="secondary-btn" id="reserve-10">10 min</button>
+            <button class="secondary-btn" id="reserve-15">15 min</button>
+            <button class="secondary-btn" id="reserve-30">30 min</button>
+            <button class="secondary-btn" id="reserve-60">60 min</button>
+        </div>
+    </dialog>
+    
+   
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+   
+</body>
+</html>
