@@ -50,23 +50,31 @@ function upcomingMeetingState(){
     const endTime = new Date(listedEvents[0].end.dateTime);
     const endTimeMinsConv = (endTime.getMinutes() < 10 ? '0' : '') + endTime.getMinutes();
 
+    //Show
     document.querySelector("#meet-title").textContent = listedEvents[0].summary; //Meet title
     document.querySelector("#meet-org").textContent = listedEvents[0].creator.email;
     document.querySelector("#meet-time").textContent = `${getWeekDayName(startTime)}, ${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="block";
+
+    //Hide
     document.querySelector("#no-events").textContent ="";
     document.querySelector(".countdown-container").style.visibility ="hidden";
-    
+    document.querySelector("#btn-end").style.display = "none";
 }
 
 //If there are no meetings fetched though the API, due to no upcoming meetings
 function emptyMeetingState(){
+
+    //Show
     document.querySelector("#no-events").textContent ="Ingen Begivenheder";
+    document.querySelector("#btn-reserve").style.display ="block";
+    document.querySelector(".countdown-container").style.visibility ="hidden";
+    
+    //Hide
     document.querySelector("#meet-title").textContent ="";
     document.querySelector("#meet-time").textContent ="";
     document.querySelector("#meet-org").textContent ="";
-    document.querySelector("#btn-reserve").style.display ="block";
-    document.querySelector(".countdown-container").style.visibility ="hidden";
+    document.querySelector("#btn-end").style.display = "none";
 }
 
 function activeMeetingState(){
@@ -75,15 +83,20 @@ function activeMeetingState(){
     const endTime = new Date(listedEvents[0].end.dateTime);
     const endTimeMinsConv = (endTime.getMinutes() < 10 ? '0' : '') + endTime.getMinutes();
 
+
+    //Show
     document.querySelector(".time-content").style.display ="grid";
     document.querySelector("#meet-title").textContent = listedEvents[0].summary; //Meet title
     document.querySelector("#meet-org").textContent =listedEvents[0].creator.email;
     document.querySelector("#meet-time").textContent = `${getWeekDayName(startTime)}, ${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
-    document.querySelector("#btn-reserve").style.display ="none";
-    document.querySelector("#no-events").textContent ="";
     document.querySelector("#number").textContent = `${Math.floor(calculateRemainingTime(endTime))} min`;
     document.querySelector(".countdown-container").style.visibility ="visible";
     document.querySelector('circle#myCircle').style.strokeDashoffset = calculateCircleCircumference(startTime,endTime);
+    document.querySelector("#btn-end").style.display = "block";
+
+    //Hide
+    document.querySelector("#btn-reserve").style.display ="none";
+    document.querySelector("#no-events").textContent ="";
 }
 
 function displayAdditionalMeetings(){

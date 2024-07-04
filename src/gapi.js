@@ -195,6 +195,7 @@ let listedEvents;
         const startDate = new Date(startTime);
   
         const event = {
+          'summary': listedEvents[0].summary,
           'start': {
             'dateTime': startDate.toISOString(),
             'timeZone': 'Europe/Copenhagen'

@@ -107,7 +107,9 @@ body{
 
 
 
-
+#btn-end, #btn-reserve{
+    display: none;
+}
 
 /*GENERAL utilitites*/
 
