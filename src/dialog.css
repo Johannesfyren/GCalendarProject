@@ -1,6 +1,7 @@
-.hide{  
+/* .hide{  
     animation: dia-close 1s linear;     
-}
+} */
+
 #reserve-dialog:not([open]){  
     animation: dia-close 1s linear; 
     background-color: yellowgreen;    

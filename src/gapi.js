@@ -147,7 +147,7 @@ let listedEvents;
           
           console.log(listedEvents);
         }
-      }, 5000);
+      }, 30000);
 
       setInterval(()=> {
         if (gapiInited && gisInited && authorized){ //Check if we have gotten a token, if yes, we claim a new access_token every hour
@@ -182,6 +182,7 @@ let listedEvents;
           'calendarId': 'primary',
           'resource': event
         });
+        listUpcomingEvents();
         //commented this out, as it did nothing good 
         // request.execute(function(event) {
         //   append('Event created: ' + event.htmlLink);
@@ -211,6 +212,8 @@ let listedEvents;
           'eventId': listedEvents[0].id,
           'resource': event
         });
+        listUpcomingEvents(); //
+
         //commented this out, as it did nothing good 
         // request.execute(function(event) {
         //   append('Event created: ' + event.htmlLink);

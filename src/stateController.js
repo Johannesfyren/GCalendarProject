@@ -2,6 +2,7 @@ import { gapiInited, gisInited, listedEvents, authorized} from "./gapi";
 import { calculateCircleCircumference, calculateRemainingTime} from "./countDown";
 const ugedage = ["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"];
 let meetingState; // used to determine the state the screen are in, and fx to determine if there are meetings we can end //0 = no meetings, 1 = meetings in the calendar, 2, meeting is active
+let animationActive = false;
 
 //Do we have any meetings in the calendar?
 setInterval(function() {
