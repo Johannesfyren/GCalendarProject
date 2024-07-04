@@ -1,4 +1,6 @@
-const testFetch = document.querySelector("#test-fetch");
+
+
+
 let listedEvents;
 /* exported gapiLoaded */
       /* exported gisLoaded */
@@ -128,7 +130,10 @@ let listedEvents;
           };
           response = await gapi.client.calendar.events.list(request);
           listedEvents = await response.result.items;
-          console.log(listedEvents);
+          
+          
+
+
         } catch (err) {
           console.log(err.message);
           

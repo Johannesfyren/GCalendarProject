@@ -1,5 +1,12 @@
 import { createEvent, endEvent, listedEvents } from "./gapi";
 
+// document.querySelector("#button-reserve").classList.add("button--loading");
+
+//btn.classList.add("button--loading");
+//btn.classList.remove("button--loading");
+
+
+
 const endMeeting = document.querySelector('#btn-end');
 
 const reserve = document.querySelector('#btn-reserve');
@@ -14,6 +21,7 @@ const reserve_60 = document.querySelector('#reserve-60');
 
 endMeeting.addEventListener('click', ()=>{
     endCurrentMeeting();
+    endMeeting.classList.add("button--loading");
 })
 
 
@@ -29,21 +37,25 @@ closeReserveDialog.addEventListener('click', ()=>{
 reserve_10.addEventListener('click', ()=>{
     createEvent(10);
     reserveDialog.close();
+    reserve.classList.add("button--loading");
 })
 
 reserve_15.addEventListener('click', ()=>{
     createEvent(15);
     reserveDialog.close();
+    reserve.classList.add("button--loading");
 })
 
 reserve_30.addEventListener('click', ()=>{
     createEvent(30);
     reserveDialog.close();
+    reserve.classList.add("button--loading");
 })
 
 reserve_60.addEventListener('click', ()=>{
     createEvent(60);
     reserveDialog.close();
+    reserve.classList.add("button--loading");
 })
 
 //Calculates the amount of minutes until next meeting is starting
@@ -73,3 +85,5 @@ function checkDisabledReserveTimes(){
 function endCurrentMeeting(){
     endEvent(listedEvents[0].start.dateTime);
 }
+
+export {reserve, endMeeting}

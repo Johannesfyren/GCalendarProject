@@ -1,5 +1,6 @@
 import { gapiInited, gisInited, listedEvents, authorized} from "./gapi";
 import { calculateCircleCircumference, calculateRemainingTime} from "./countDown";
+import { reserve,endMeeting } from "./manipulateMeetings";
 const ugedage = ["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"];
 let meetingState; // used to determine the state the screen are in, and fx to determine if there are meetings we can end //0 = no meetings, 1 = meetings in the calendar, 2, meeting is active
 let animationActive = false;
@@ -58,6 +59,8 @@ function upcomingMeetingState(){
     document.querySelector("#btn-reserve").style.display ="block";
 
     //Hide
+    reserve.classList.remove("button--loading");
+          endMeeting.classList.remove("button--loading");
     document.querySelector("#no-events").textContent ="";
     document.querySelector(".countdown-container").style.visibility ="hidden";
     document.querySelector("#btn-end").style.display = "none";
@@ -72,6 +75,8 @@ function emptyMeetingState(){
     document.querySelector(".countdown-container").style.visibility ="hidden";
     
     //Hide
+    reserve.classList.remove("button--loading");
+          endMeeting.classList.remove("button--loading");
     document.querySelector("#meet-title").textContent ="";
     document.querySelector("#meet-time").textContent ="";
     document.querySelector("#meet-org").textContent ="";
@@ -98,6 +103,8 @@ function activeMeetingState(){
     //Hide
     document.querySelector("#btn-reserve").style.display ="none";
     document.querySelector("#no-events").textContent ="";
+    reserve.classList.remove("button--loading");
+          endMeeting.classList.remove("button--loading");
 }
 
 function displayAdditionalMeetings(){
