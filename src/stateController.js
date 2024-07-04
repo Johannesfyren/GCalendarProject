@@ -1,28 +1,29 @@
 import { gapiInited, gisInited, listedEvents, authorized} from "./gapi";
 import { calculateCircleCircumference, calculateRemainingTime} from "./countDown";
 const ugedage = ["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"];
+let meetingState; // used to determine the state the screen are in, and fx to determine if there are meetings we can end //0 = no meetings, 1 = meetings in the calendar, 2, meeting is active
 
 //Do we have any meetings in the calendar?
 setInterval(function() {
     if (gapiInited && gisInited && authorized){
-
+        
         if (!listedEvents.length==0){ //Checking if there are any meetings in the calendar
             const nextMeeting = new Date(listedEvents[0].start.dateTime);
-            console.log(`my time ${nextMeeting.getTime()}`);
+            
 
             if (checkIfActiveMeeting(listedEvents[0].start.dateTime,listedEvents[0].end.dateTime)){ //"checking if it any of the meetings is active!"
                 activeMeetingState();
                 displayAdditionalMeetings();
-                
+                meetingState = 2;
 
             }else { //("We have meetings in the calendar, but none is active!");
                 upcomingMeetingState();
                 displayAdditionalMeetings();
-                
+                meetingState = 1;
             }
         }
-        else {//We have no meeetings coming up
-            
+        else {//We have no meeetings
+            meetingState = 0;
             emptyMeetingState();
         }
     } 
@@ -144,3 +145,4 @@ function getWeekDayName(meetingDate){
 
 
 
+export {meetingState};

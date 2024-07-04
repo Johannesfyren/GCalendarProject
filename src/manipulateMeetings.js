@@ -1,5 +1,6 @@
-import { createEvent } from "./gapi";
-import { listedEvents } from "./gapi";
+import { createEvent, endEvent, listedEvents } from "./gapi";
+
+const endMeeting = document.querySelector('#btn-end');
 
 const reserve = document.querySelector('#btn-reserve');
 const reserveDialog = document.querySelector('#reserve-dialog');
@@ -11,6 +12,11 @@ const reserve_30 = document.querySelector('#reserve-30');
 const reserve_60 = document.querySelector('#reserve-60');
 
 
+endMeeting.addEventListener('click', ()=>{
+    endCurrentMeeting();
+})
+
+
 reserve.addEventListener('click', ()=>{
     //checkDisabledReserveTimes();
     reserveDialog.showModal();
@@ -18,7 +24,6 @@ reserve.addEventListener('click', ()=>{
 
 closeReserveDialog.addEventListener('click', ()=>{
     reserveDialog.close();
-    console.log(timeToNextMeeting());
 })
 
 reserve_10.addEventListener('click', ()=>{
@@ -63,4 +68,8 @@ function checkDisabledReserveTimes(){
     if(timeToNextMeeting()<10){
         reserve_10.disabled = true;
     } else {reserve_10.disabled = false;}
+}
+
+function endCurrentMeeting(){
+    endEvent(listedEvents[0].start.dateTime);
 }

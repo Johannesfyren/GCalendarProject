@@ -123,12 +123,12 @@ let listedEvents;
             'timeMin': (new Date()).toISOString(),
             'showDeleted': false,
             'singleEvents': true,
-            'maxResults': 5,
+            'maxResults': 6,
             'orderBy': 'startTime',
           };
           response = await gapi.client.calendar.events.list(request);
           listedEvents = await response.result.items;
-          console.log(listedEvents.length);
+          console.log(listedEvents);
         } catch (err) {
           console.log(err.message);
           
@@ -188,6 +188,34 @@ let listedEvents;
         // });
         
       }
+
+      //End current meeting
+      async function endEvent(startTime){
+        const today = new Date();
+        const startDate = new Date(startTime);
+  
+        const event = {
+          'start': {
+            'dateTime': startDate.toISOString(),
+            'timeZone': 'Europe/Copenhagen'
+          },
+          'end': {
+            'dateTime': today.toISOString(),
+            'timeZone': 'Europe/Copenhagen'
+          },
+        };
+        
+        const request = await gapi.client.calendar.events.update({
+          'calendarId': 'primary',
+          'eventId': listedEvents[0].id,
+          'resource': event
+        });
+        //commented this out, as it did nothing good 
+        // request.execute(function(event) {
+        //   append('Event created: ' + event.htmlLink);
+        // });
+        
+      }
       
-      export {gapiInited, gisInited, listedEvents, authorized, createEvent}
+      export {gapiInited, gisInited, listedEvents, authorized, createEvent, endEvent}
         
