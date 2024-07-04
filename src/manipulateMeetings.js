@@ -1,35 +1,38 @@
-import { createEvent, endEvent, listedEvents } from "./gapi";
-
-// document.querySelector("#button-reserve").classList.add("button--loading");
-
-//btn.classList.add("button--loading");
-//btn.classList.remove("button--loading");
-
-
+import { createEvent, endEvent, listedEvents} from "./gapi";
+import { animationActive } from "./stateController";
 
 const endMeeting = document.querySelector('#btn-end');
 
 const reserve = document.querySelector('#btn-reserve');
 const reserveDialog = document.querySelector('#reserve-dialog');
 const closeReserveDialog = document.querySelector('#reserve-close');
+const circleAnimOuter = document.querySelector('#myCircle');
 
 const reserve_10 = document.querySelector('#reserve-10');
 const reserve_15 = document.querySelector('#reserve-15');
 const reserve_30 = document.querySelector('#reserve-30');
 const reserve_60 = document.querySelector('#reserve-60');
 
-
-endMeeting.addEventListener('click', ()=>{
+//End meeting
+endMeeting.addEventListener('click', ()=>{ 
     endCurrentMeeting();
     endMeeting.classList.add("button--loading");
+
+    //Animation
+    circleAnimOuter.classList.add('countdown--end');//Start animation
+    setTimeout(function() {
+        circleAnimOuter.style.strokeDashoffset = 1130; //Set circumference to closed
+        circleAnimOuter.classList.remove('countdown--end');// reset it, so we can animate later again
+      }, 1500);
+      animationActive = false; //Make it possible to start animation on meeting start
 })
 
-
+//open dialog modal
 reserve.addEventListener('click', ()=>{
-    //checkDisabledReserveTimes();
     reserveDialog.showModal();
 })
 
+//close dialog modal with no pick
 closeReserveDialog.addEventListener('click', ()=>{
     reserveDialog.close();
 })
@@ -86,4 +89,4 @@ function endCurrentMeeting(){
     endEvent(listedEvents[0].start.dateTime);
 }
 
-export {reserve, endMeeting}
+export {reserve, endMeeting, circleAnimOuter}

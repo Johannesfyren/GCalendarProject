@@ -34,9 +34,7 @@ svg{
     stroke-dashoffset: 0;
     r:180; 
     cx:50%;
-    cy:50%;
-    /* animation: anim-close 1s ease-out; */
-    
+    cy:50%; 
 }
 
 #myCircle{ /* background to timer*/
@@ -48,17 +46,32 @@ svg{
     r:180; 
     cx:50%;
     cy:50%;
-    /* animation: anim-close 1s ease-out; */
+}
+.countdown--start{
+    animation: anim-open 1.5s ease-out; 
+}
+.countdown--end{
+    animation: anim-close 1.5s ease-out; 
 }
 
-/* @keyframes anim-close {
+@keyframes anim-close {
    
     100% {
         stroke-dasharray: 1130;
         stroke-dashoffset: 1130;
     }
-    
-} */
+}
+@keyframes anim-open {
+   
+    0%{
+        stroke-dasharray: 1130;
+        stroke-dashoffset: 1130;
+    }
+    100% {
+        stroke-dasharray: 1130;
+        stroke-dashoffset: 0;
+    }
+}
 
 
 #timer{
@@ -68,9 +81,7 @@ svg{
 
 
 
-/* svg{
-    transform: rotate(-90 deg);
-} */
+
 #indicator-anim{
     fill: none;
     width: 200px;

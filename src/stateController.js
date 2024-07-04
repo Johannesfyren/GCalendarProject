@@ -1,6 +1,6 @@
 import { gapiInited, gisInited, listedEvents, authorized} from "./gapi";
 import { calculateCircleCircumference, calculateRemainingTime} from "./countDown";
-import { reserve,endMeeting } from "./manipulateMeetings";
+import { reserve,endMeeting, circleAnimOuter } from "./manipulateMeetings";
 const ugedage = ["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"];
 let meetingState; // used to determine the state the screen are in, and fx to determine if there are meetings we can end //0 = no meetings, 1 = meetings in the calendar, 2, meeting is active
 let animationActive = false;
@@ -18,18 +18,31 @@ setInterval(function() {
                 displayAdditionalMeetings();
                 meetingState = 2;
 
+                //Animate circle on meeting start
+                if (animationActive == false){
+                    circleAnimOuter.classList.add('countdown--start');//Start animation
+                    setTimeout(function() {
+                        circleAnimOuter.classList.remove('countdown--start');// reset it, so we can animate later again
+                        animationActive = true;
+                    }, 1500);
+                }
+
             }else { //("We have meetings in the calendar, but none is active!");
                 upcomingMeetingState();
                 displayAdditionalMeetings();
                 meetingState = 1;
+                animationActive = false;
             }
         }
         else {//We have no meeetings
             meetingState = 0;
             emptyMeetingState();
+            animationActive = false;
         }
     } 
   }, 5000);
+
+
 
 
 
@@ -166,4 +179,4 @@ function getWeekDayName(meetingDate){
 
 
 
-export {meetingState};
+export {animationActive};
