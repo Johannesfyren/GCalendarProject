@@ -30,6 +30,7 @@ endMeeting.addEventListener('click', ()=>{
 //open dialog modal
 reserve.addEventListener('click', ()=>{
     reserveDialog.showModal();
+    checkDisabledReserveTimes();
 })
 
 //close dialog modal with no pick
