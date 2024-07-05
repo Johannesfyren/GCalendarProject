@@ -30,7 +30,7 @@ endMeeting.addEventListener('click', ()=>{
 //open dialog modal
 reserve.addEventListener('click', ()=>{
     reserveDialog.showModal();
-    checkDisabledReserveTimes();
+    checkDisabledReserveTimes(); // Check how much time there is to next meeting, and disable options if the exceed time to upcoming meeting
 })
 
 //close dialog modal with no pick
