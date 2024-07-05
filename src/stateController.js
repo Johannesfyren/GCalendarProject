@@ -2,6 +2,7 @@ import { gapiInited, gisInited, listedEvents, authorized} from "./gapi";
 import { calculateCircleCircumference, calculateRemainingTime} from "./countDown";
 import { reserve,endMeeting, circleAnimOuter } from "./manipulateMeetings";
 const ugedage = ["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"];
+const secContent = document.querySelector('.sec-content');
 let meetingState; // used to determine the state the screen are in, and fx to determine if there are meetings we can end //0 = no meetings, 1 = meetings in the calendar, 2, meeting is active
 let animationActive = false;
 
@@ -9,8 +10,16 @@ let animationActive = false;
 setInterval(function() {
     if (gapiInited && gisInited && authorized){
         
+        //Checking if there are more than just one event, and sets background of upcoming meeting background to transparent og semi transparent
+        if (listedEvents.length<2){
+            secContent.style.backgroundColor = "transparent";
+        }else {secContent.style.backgroundColor = "var(--sec-col)";}
+
+
+
+        //Sequence to check for #of meetings and draw the UI accordingly
         if (!listedEvents.length==0){ //Checking if there are any meetings in the calendar
-            const nextMeeting = new Date(listedEvents[0].start.dateTime);
+            // const nextMeeting = new Date(listedEvents[0].start.dateTime);    
             
 
             if (checkIfActiveMeeting(listedEvents[0].start.dateTime,listedEvents[0].end.dateTime)){ //"checking if it any of the meetings is active!"
@@ -51,8 +60,6 @@ function checkIfActiveMeeting(startTime, endTime){
     const start = new Date(startTime);
     const end = new Date(endTime);
     
-
-
     if (start <= today && end >= today){
         return true;
     }
@@ -70,13 +77,16 @@ function upcomingMeetingState(){
     document.querySelector("#meet-org").textContent = listedEvents[0].creator.email;
     document.querySelector("#meet-time").textContent = `${getWeekDayName(startTime)}, ${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="block";
+    document.querySelector("#bg-img").src = "/src/img/Bg-img.png";
 
     //Hide
     reserve.classList.remove("button--loading");
-          endMeeting.classList.remove("button--loading");
+    endMeeting.classList.remove("button--loading");
     document.querySelector("#no-events").textContent ="";
     document.querySelector(".countdown-container").style.visibility ="hidden";
     document.querySelector("#btn-end").style.display = "none";
+    
+    
 }
 
 //If there are no meetings fetched though the API, due to no upcoming meetings
@@ -86,7 +96,8 @@ function emptyMeetingState(){
     document.querySelector("#no-events").textContent ="Ingen Begivenheder";
     document.querySelector("#btn-reserve").style.display ="block";
     document.querySelector(".countdown-container").style.visibility ="hidden";
-    
+    document.querySelector("#bg-img").src = "/src/img/Bg-img.png";
+
     //Hide
     reserve.classList.remove("button--loading");
           endMeeting.classList.remove("button--loading");
@@ -94,6 +105,7 @@ function emptyMeetingState(){
     document.querySelector("#meet-time").textContent ="";
     document.querySelector("#meet-org").textContent ="";
     document.querySelector("#btn-end").style.display = "none";
+    
 }
 
 function activeMeetingState(){
@@ -112,6 +124,7 @@ function activeMeetingState(){
     document.querySelector(".countdown-container").style.visibility ="visible";
     document.querySelector('circle#myCircle').style.strokeDashoffset = calculateCircleCircumference(startTime,endTime);
     document.querySelector("#btn-end").style.display = "block";
+    document.querySelector("#bg-img").src = "/src/img/Bg-img-occupied.png";
 
     //Hide
     document.querySelector("#btn-reserve").style.display ="none";
