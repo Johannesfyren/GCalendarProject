@@ -79,10 +79,11 @@ function upcomingMeetingState(){
     //Show
     document.querySelector("#meet-title").textContent = listedEvents[0].summary; //Meet title
     document.querySelector("#meet-org").textContent = listedEvents[0].creator.email.slice(0,listedEvents[0].creator.email.search('@'));//Organizer without @gmail.com
-    
     document.querySelector("#meet-time").textContent = `${getWeekDayName(startTime)}, ${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="block";
     document.querySelector("#bg-img").src = bgImgFree;
+    document.querySelector('.flex-icon-meet').style.display = 'flex';
+    document.querySelector('.flex-icon-time').style.display = 'flex';
 
     //Hide
     reserve.classList.remove("button--loading");
@@ -107,9 +108,11 @@ function emptyMeetingState(){
     reserve.classList.remove("button--loading");
           endMeeting.classList.remove("button--loading");
     document.querySelector("#meet-title").textContent ="";
-    document.querySelector("#meet-time").textContent ="";
+    document.querySelector("#meet-time").replaceChildren();
     document.querySelector("#meet-org").textContent =""; //Organizer
     document.querySelector("#btn-end").style.display = "none";
+    document.querySelector('.flex-icon-meet').style.display = 'none';
+    document.querySelector('.flex-icon-time').style.display = 'none';
     
 }
 
@@ -130,6 +133,8 @@ function activeMeetingState(){
     document.querySelector('#inner-circle').style.strokeDashoffset = calculateCircleCircumference(startTime,endTime);
     document.querySelector("#btn-end").style.display = "block";
     document.querySelector("#bg-img").src = bgImgOccupied;
+    document.querySelector('.flex-icon-meet').style.display = 'flex';
+    document.querySelector('.flex-icon-time').style.display = 'flex';
 
     //Hide
     document.querySelector("#btn-reserve").style.display ="none";

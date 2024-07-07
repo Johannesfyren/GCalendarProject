@@ -21,17 +21,24 @@
             <div class="time-content">
                 <div class="title-time-container">
                     <h2 id="meet-title"></h2>
-                    <h3 id="meet-time"></h3>
-                    <h3 id="meet-org"></h3>
+                    <div class="flex-icon-time">
+                        <ion-icon name="time" class="icon-from-ion"></ion-icon>
+                        <h3 id="meet-time"></h3>
+                    </div>
+                    <div class="flex-icon-meet">
+                        <ion-icon name="person" class="icon-from-ion"></ion-icon>
+                        <h3 id="meet-org"></h3>
+                    </div>
+                    
                 </div>
 
                 <div class="countdown-container">
                     <div id="number">122 min</div> 
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                        <circle id="outer-circle" stroke-linecap="round" cx="50%" cy="50%" r="180" /> <!-- circle2 -->
+                        <circle id="outer-circle" stroke-linecap="round" cx="50%" cy="50%" r="180" /> 
                     </svg>
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                        <circle id="inner-circle" stroke-linecap="round" cx="50%" cy="50%" r="180" /> <!--  circle - should be mani-->
+                        <circle id="inner-circle" stroke-linecap="round" cx="50%" cy="50%" r="180" /> 
                     </svg>
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <circle id="indicator-anim" stroke-linecap="round" cx="50%" cy="50%" r="205"/>

@@ -52,6 +52,10 @@ body{
 .title-time-container{
     flex-shrink: 0;
 }
+.title-time-container>div{
+    flex-shrink: 0;
+    margin: 20px 0;
+}
 
 
 
@@ -131,6 +135,25 @@ body{
 }
 
 
+.flex-icon-meet, .flex-icon-time{
+    display: none;
+    align-items: center;
+    
+}
+.flex-icon-meet ion-icon, .flex-icon-time ion-icon{
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    color: #fff;
+    margin-right: 10px;
+    --ionicon-stroke-width: 64px;
+}
+
+
+
+
+
+
 /*GENERAL utilitites*/
 
 h1, h2, h3{
@@ -190,5 +213,6 @@ button{
     color: rgb(98, 98, 98);
     border: 1px solid rgb(98, 98, 98);
 }
+
 
 

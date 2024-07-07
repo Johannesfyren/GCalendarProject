@@ -3,15 +3,14 @@
 } */
 
 #reserve-dialog:not([open]){  
-    animation: dia-close 1s linear; 
-    background-color: yellowgreen;    
+    animation: dia-close 1s linear;   
 }
 
 #reserve-dialog[open]{
     position: relative;
     display:flex;
     flex-direction: column;
-    background-color: rgb(90, 58, 98);
+    background-color: #001f3f;
     width: 70%;
     height: 50%;
     margin: auto;
