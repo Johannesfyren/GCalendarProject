@@ -8,12 +8,12 @@ let animationActive = false;
 import bgImgFree from './img/Bg-img.png';
 import bgImgOccupied from './img/Bg-img-occupied.png';
 
-console.log(typeof animationActive);
-
 //Do we have any meetings in the calendar?
 setInterval(function() {
     if (gapiInited && gisInited && authorized){
-        
+        currentTime(); // Always call and display the current time of day
+
+
         //Checking if there are more than just one event, and sets background of upcoming meeting background to transparent og semi transparent
         if (listedEvents.length<2){
             secContent.style.backgroundColor = "transparent";
@@ -37,7 +37,6 @@ setInterval(function() {
                     setTimeout(function() {
                         circleAnimOuter.classList.remove('countdown--start');// reset it, so we can animate later again
                         animationActive = true;
-                        console.log(typeof animationActive);
                     }, 1500);
                 }
 
@@ -46,14 +45,12 @@ setInterval(function() {
                 displayAdditionalMeetings();
                 meetingState = 1;
                 animationActive = false;
-                console.log(typeof animationActive);
             }
         }
         else {//We have no meeetings
             meetingState = 0;
             emptyMeetingState();
             animationActive = false;
-            console.log(typeof animationActive);
         }
     } 
   }, 5000);
@@ -197,6 +194,12 @@ function getWeekDayName(meetingDate){
 }
 
 
-
+function currentTime(){
+    const currentTime = new Date();
+    const currentTimeConverted = (currentTime.getUTCMinutes() < 10 ? '0' : '') + currentTime.getUTCMinutes();
+    const today = new Date();
+    document.querySelector('#current-time').textContent = `${today.getHours()}:${currentTimeConverted}`
+    
+}
 
 export {animationActive};
