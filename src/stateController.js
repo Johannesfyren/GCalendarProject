@@ -78,7 +78,8 @@ function upcomingMeetingState(){
 
     //Show
     document.querySelector("#meet-title").textContent = listedEvents[0].summary; //Meet title
-    document.querySelector("#meet-org").textContent = listedEvents[0].creator.email;
+    document.querySelector("#meet-org").textContent = listedEvents[0].creator.email.slice(0,listedEvents[0].creator.email.search('@'));//Organizer without @gmail.com
+    
     document.querySelector("#meet-time").textContent = `${getWeekDayName(startTime)}, ${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="block";
     document.querySelector("#bg-img").src = bgImgFree;
@@ -107,7 +108,7 @@ function emptyMeetingState(){
           endMeeting.classList.remove("button--loading");
     document.querySelector("#meet-title").textContent ="";
     document.querySelector("#meet-time").textContent ="";
-    document.querySelector("#meet-org").textContent ="";
+    document.querySelector("#meet-org").textContent =""; //Organizer
     document.querySelector("#btn-end").style.display = "none";
     
 }
@@ -122,7 +123,7 @@ function activeMeetingState(){
     //Show
     document.querySelector(".time-content").style.display ="grid";
     document.querySelector("#meet-title").textContent = listedEvents[0].summary; //Meet title
-    document.querySelector("#meet-org").textContent =listedEvents[0].creator.email;
+    document.querySelector("#meet-org").textContent = listedEvents[0].creator.email.slice(0,listedEvents[0].creator.email.search('@')); //Organizer without @gmail.com
     document.querySelector("#meet-time").textContent = `${getWeekDayName(startTime)}, ${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#number").textContent = `${Math.floor(calculateRemainingTime(endTime))} min`;
     document.querySelector(".countdown-container").style.visibility ="visible";
@@ -134,7 +135,7 @@ function activeMeetingState(){
     document.querySelector("#btn-reserve").style.display ="none";
     document.querySelector("#no-events").textContent ="";
     reserve.classList.remove("button--loading");
-          endMeeting.classList.remove("button--loading");
+    endMeeting.classList.remove("button--loading");
 }
 
 function displayAdditionalMeetings(){

@@ -90,8 +90,11 @@
 
 @keyframes dia-open{
     0%{
-        width: 0;
-        height: 0;
+        
+        transform: scale(95%);
+        position: relative;
+        top: -10%;
+        background-color: rgba(100, 100, 100,0);
     }
     100%{
 
