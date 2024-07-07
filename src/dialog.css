@@ -18,6 +18,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    border-style: none;
     padding: 10px;
     animation: dia-open 0.1s linear;   
 }

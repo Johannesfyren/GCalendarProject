@@ -127,7 +127,7 @@ function activeMeetingState(){
     document.querySelector("#meet-time").textContent = `${getWeekDayName(startTime)}, ${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#number").textContent = `${Math.floor(calculateRemainingTime(endTime))} min`;
     document.querySelector(".countdown-container").style.visibility ="visible";
-    document.querySelector('circle#myCircle').style.strokeDashoffset = calculateCircleCircumference(startTime,endTime);
+    document.querySelector('#inner-circle').style.strokeDashoffset = calculateCircleCircumference(startTime,endTime);
     document.querySelector("#btn-end").style.display = "block";
     document.querySelector("#bg-img").src = bgImgOccupied;
 

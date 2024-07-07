@@ -6,7 +6,7 @@ const endMeeting = document.querySelector('#btn-end');
 const reserve = document.querySelector('#btn-reserve');
 const reserveDialog = document.querySelector('#reserve-dialog');
 const closeReserveDialog = document.querySelector('#reserve-close');
-const circleAnimOuter = document.querySelector('#myCircle');
+const circleAnimOuter = document.querySelector('#inner-circle');
 
 const reserve_10 = document.querySelector('#reserve-10');
 const reserve_15 = document.querySelector('#reserve-15');

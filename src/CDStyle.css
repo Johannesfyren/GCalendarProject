@@ -26,9 +26,19 @@ svg{
     font-size: 5em;
 }
 
-#myCircle2{ /* background to timer*/
+#outer-circle{ /* background to timer*/
     fill:none;
-    stroke: rgb(65, 64, 64);
+    stroke: #D98282;
+    stroke-width: 40px;
+    stroke-dasharray: 1130;
+    stroke-dashoffset: 0;
+    r:180; 
+    cx:50%;
+    cy:50%;
+}
+#inner-circle{ /* timer indicator*/
+    fill:none;
+    stroke: #fff;
     stroke-width: 40px;
     stroke-dasharray: 1130;
     stroke-dashoffset: 0;
@@ -37,16 +47,7 @@ svg{
     cy:50%; 
 }
 
-#myCircle{ /* background to timer*/
-    fill:none;
-    stroke: blue;
-    stroke-width: 40px;
-    stroke-dasharray: 1130;
-    stroke-dashoffset: 1130;
-    r:180; 
-    cx:50%;
-    cy:50%;
-}
+
 .countdown--start{
     animation: anim-open 1.5s ease-out; 
 }
