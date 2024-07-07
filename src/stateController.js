@@ -5,6 +5,10 @@ const ugedage = ["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørd
 const secContent = document.querySelector('.sec-content');
 let meetingState; // used to determine the state the screen are in, and fx to determine if there are meetings we can end //0 = no meetings, 1 = meetings in the calendar, 2, meeting is active
 let animationActive = false;
+import bgImgFree from './img/Bg-img.png';
+import bgImgOccupied from './img/Bg-img-occupied.png';
+
+console.log(typeof animationActive);
 
 //Do we have any meetings in the calendar?
 setInterval(function() {
@@ -33,6 +37,7 @@ setInterval(function() {
                     setTimeout(function() {
                         circleAnimOuter.classList.remove('countdown--start');// reset it, so we can animate later again
                         animationActive = true;
+                        console.log(typeof animationActive);
                     }, 1500);
                 }
 
@@ -41,12 +46,14 @@ setInterval(function() {
                 displayAdditionalMeetings();
                 meetingState = 1;
                 animationActive = false;
+                console.log(typeof animationActive);
             }
         }
         else {//We have no meeetings
             meetingState = 0;
             emptyMeetingState();
             animationActive = false;
+            console.log(typeof animationActive);
         }
     } 
   }, 5000);
@@ -77,7 +84,7 @@ function upcomingMeetingState(){
     document.querySelector("#meet-org").textContent = listedEvents[0].creator.email;
     document.querySelector("#meet-time").textContent = `${getWeekDayName(startTime)}, ${startTime.getHours()}:${startTimeMinsConv} - ${endTime.getHours()}:${endTimeMinsConv}`; //Meet time
     document.querySelector("#btn-reserve").style.display ="block";
-    document.querySelector("#bg-img").src = "/src/img/Bg-img.png";
+    document.querySelector("#bg-img").src = bgImgFree;
 
     //Hide
     reserve.classList.remove("button--loading");
@@ -96,7 +103,7 @@ function emptyMeetingState(){
     document.querySelector("#no-events").textContent ="Ingen Begivenheder";
     document.querySelector("#btn-reserve").style.display ="block";
     document.querySelector(".countdown-container").style.visibility ="hidden";
-    document.querySelector("#bg-img").src = "/src/img/Bg-img.png";
+    document.querySelector("#bg-img").src = bgImgFree;
 
     //Hide
     reserve.classList.remove("button--loading");
@@ -124,7 +131,7 @@ function activeMeetingState(){
     document.querySelector(".countdown-container").style.visibility ="visible";
     document.querySelector('circle#myCircle').style.strokeDashoffset = calculateCircleCircumference(startTime,endTime);
     document.querySelector("#btn-end").style.display = "block";
-    document.querySelector("#bg-img").src = "/src/img/Bg-img-occupied.png";
+    document.querySelector("#bg-img").src = bgImgOccupied;
 
     //Hide
     document.querySelector("#btn-reserve").style.display ="none";

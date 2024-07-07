@@ -24,13 +24,14 @@ endMeeting.addEventListener('click', ()=>{
         circleAnimOuter.style.strokeDashoffset = 1130; //Set circumference to closed
         circleAnimOuter.classList.remove('countdown--end');// reset it, so we can animate later again
       }, 1500);
-      animationActive = false; //Make it possible to start animation on meeting start
+      //animationActive = false; //Make it possible to start animation on meeting start.. LÆS: udkommenteret, da værdien er sat til 0 åbenbart, og JS anser denne værdi som værende et object med kun en "getter"
+      
 })
 
 //open dialog modal
 reserve.addEventListener('click', ()=>{
     reserveDialog.showModal();
-    checkDisabledReserveTimes(); // Check how much time there is to next meeting, and disable options if the exceed time to upcoming meeting
+    if(listedEvents.length!=0){ checkDisabledReserveTimes();} // Check how much time there is to next meeting, and disable options if the exceed time to upcoming meeting
 })
 
 //close dialog modal with no pick

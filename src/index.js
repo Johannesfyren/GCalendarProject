@@ -5,6 +5,8 @@ import './stateController';
 import './countDown';
 import './manipulateMeetings';
 import './gapi';
+import bgImgFree from './img/Bg-img.png';
+import bgImgOccupied from './img/Bg-img-occupied.png';
 
 
 
