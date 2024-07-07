@@ -71,7 +71,7 @@ let listedEvents;
           }
            document.querySelector('#connect-GA').style.display = 'none';
           authorized = true;
-          
+          console.log(resp);
           await listUpcomingEvents(); 
         };
         
