@@ -15,7 +15,7 @@ setInterval(function() {
 
 
         //Checking if there are more than just one event, and sets background of upcoming meeting background to transparent og semi transparent
-        if (listedEvents.length<2){
+        if (listedEvents.length<2 ){
             secContent.style.backgroundColor = "transparent";
         }else {secContent.style.backgroundColor = "var(--sec-col)";}
 
@@ -163,7 +163,7 @@ function displayAdditionalMeetings(){
 
         const organizer = document.createElement("h2");
         organizer.classList.add("upcoming-org");
-        organizer.textContent = listedEvents[i].creator.email;
+        organizer.textContent = listedEvents[i].creator.email.slice(0,listedEvents[i].creator.email.search('@'));//Organizer without @gmail.com;
 
         const time = document.createElement("h2");
         time.classList.add("upcoming-time");

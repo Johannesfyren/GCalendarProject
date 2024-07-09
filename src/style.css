@@ -13,6 +13,7 @@ body{
     display: flex;
     flex-direction: column;
     height: 100vh; 
+    touch-action: none;
 }
 #bg-img{
     position: absolute;
@@ -107,7 +108,7 @@ body{
     min-width: 400px;
     background-color: var(--card-col);
     padding-top: 10px; /*tjek værdi*/
-    padding-left: 10px;
+    padding-left: 15px;
     margin: 10px;
     border-radius: 10px;
 }
@@ -212,6 +213,8 @@ button{
     color: rgb(98, 98, 98);
     border: 1px solid rgb(98, 98, 98);
 }
+
+
 
 
 

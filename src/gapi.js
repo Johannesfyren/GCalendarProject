@@ -156,7 +156,7 @@ let listedEvents;
       }, 30000);
 
       setInterval(()=> {
-        if (gapiInited && gisInited && authorized){ //Check if we have gotten a token, if yes, we claim a new access_token every hour
+        if (gapiInited && gisInited && authorized){ //Check if we have gotten a token, if no, we claim a new access_token every hour
           handleAuthClick();
           console.log("I handled authorization automatically");
         }
