@@ -14,7 +14,7 @@ import bgImgOccupied from './img/Bg-img-occupied.png';
 
 
 async function authenticate() {
-    const response = await fetch('/auth');
+    const response = await fetch('https://g-calendar-project.vercel.app/auth');
     const message = await response.text();
     console.log(message); // Log the message from the server
   }
