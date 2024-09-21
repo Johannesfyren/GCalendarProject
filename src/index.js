@@ -14,7 +14,7 @@ import bgImgOccupied from './img/Bg-img-occupied.png';
 
 
 async function authenticate() {
-    const response = await fetch('/GCalendarProject/auth');
+    const response = await fetch('/auth');
     const message = await response.text();
     console.log(message); // Log the message from the server
   }
