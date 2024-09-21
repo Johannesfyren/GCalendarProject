@@ -78,7 +78,7 @@ async function saveCredentials(client) {
 }
 
 const server = http.createServer(async (req, res) => {
-  if (req.method === 'GET' && req.url === '/auth') {
+  if (req.method === 'GET' && req.url === '/GCalendarProject/auth') {
     try {
       const client = await authenticate({
         scopes: SCOPES,
