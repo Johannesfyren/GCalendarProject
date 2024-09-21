@@ -23,6 +23,10 @@ async function saveCredentials(client) {
 }
 
 export default async function handler(req, res) {
+
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Allows all domains to access
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'); // Allowed methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allowed headers
   if (req.method === 'GET') {
     try {
       const client = await authenticate({
