@@ -7,13 +7,14 @@ import './manipulateMeetings';
 import './gapi';
 import bgImgFree from './img/Bg-img.png';
 import bgImgOccupied from './img/Bg-img-occupied.png';
+import { authenticate } from "@google-cloud/local-auth";
 
 
 
 
 
 async function authenticate() {
-    const response = await fetch('/auth');
+    const response = await fetch('/GCalendarProject/auth');
     const message = await response.text();
     console.log(message); // Log the message from the server
   }
