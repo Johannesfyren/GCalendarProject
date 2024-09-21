@@ -35,7 +35,7 @@ export default async function handler(req, res) {
       });
 
       await saveCredentials(client);
-      res.status(200).send('Authentication successful! Refresh token saved.');
+      res.status(200).send('Authentication successful! Refresh token saved.' + client);
     } catch (error) {
       console.error('Error during authentication:', error);
       res.status(500).send('Authentication failed.');
