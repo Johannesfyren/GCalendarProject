@@ -78,7 +78,7 @@ async function saveCredentials(client) {
 }
 
 const server = http.createServer(async (req, res) => {
-  if (req.method === 'GET' && req.url === '/GCalendarProject/auth') {
+  if (req.method === 'GET' && req.url === 'https://g-calendar-project.vercel.app/auth') {
     try {
       const client = await authenticate({
         scopes: SCOPES,
